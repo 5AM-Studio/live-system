@@ -4,6 +4,9 @@
 <div style="display: none;" id="rocket-to-top">
 <div style="opacity:0;display: block;" class="level-2"></div>
 <div class="level-3"></div>
+<script src="./js/flv.min.js"></script>
+<link rel="stylesheet" href="./js/DPlayer.min.css">
+
 </div>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -119,8 +122,10 @@ document.onselectstart=new Function('event.returnValue=false;');
                     <img src="img/aaa.png" alt="" class="zslogo">
 
                    <div class="navList">
-                   	
-                        <a href="http://www.yytv.com/" class="link cur"><span>玉岩电视台主站</span></a>
+
+						<a href="https://bili33.top" class="link cur"><span>@GamerNoTitle</span></a>
+						<a href="https://yuleng.top" class="link cur"><span>@yuleng</span></a>
+						<a href="https://5amstd.github.io" class="link cur"><span>5 A.M. Studio</span></a>
                     </div>
                 </div>
             </div>
@@ -136,7 +141,7 @@ document.onselectstart=new Function('event.returnValue=false;');
 	
 	
 		<center>
-		<script type="text/javascript" src="ckplayer/ckplayer.js"></script>
+		<!-- <script type="text/javascript" src="ckplayer/ckplayer.js"></script>
 <div id="video" style="width:800px;height:600px;"></div>
 <script type="text/javascript">
 	var videoObject = {
@@ -146,9 +151,34 @@ document.onselectstart=new Function('event.returnValue=false;');
 		video:'rtmp://live.hkstv.hk.lxdns.com/live/hks'//视频地址
 	};
 	var player=new ckplayer(videoObject);
-</script>
+</script> -->
+<div id="dplayer" style="width:960px;height:540px;"></div>
 </center>
-
+<script src="./js/DPlayer.min.js"></script>
+<script>
+	const dp = new DPlayer({
+		container: document.getElementById('dplayer'),
+		live: true,
+		danmaku: false,
+		apiBackend: {
+			read: function(endpoint, callback) {
+				console.log('Pretend to connect WebSocket');
+				callback();
+			},
+			send: function(endpoint, danmakuData, callback) {
+				console.log('Pretend to send danamku via WebSocket', danmakuData);
+				callback();
+			},
+		},
+		video: {
+			url: './201678934-1-80.flv',
+			type: 'flv',
+			autoplay: true,
+		},
+		
+	});
+	console.log(dp.plugins.flv);
+</script>
 
 
 
